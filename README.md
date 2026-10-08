@@ -1,53 +1,35 @@
-# 7 Landing Pages Completed
+# AliceLabs — editable landing templates
 
-This folder contains static builds of 7 industry‑specific landing pages built with React and Tailwind CSS.
+Seven source-driven landing structures with a commercial catalogue, distinct industry copy/colors, responsive layouts and draft-email inquiries. Demo brands are fictitious and every demo is labelled and noindex. There are no invented clients, testimonials, subscriptions or payment flows.
 
-## Pages
+## Build and preview
 
-1. **Consulting Agency** (`/consultingagency`) – Strategy, operations, and digital transformation consulting.
-2. **Digital Agency** (`/digitalagency`) – Full‑service digital marketing, design, and development.
-3. **Education Platform** (`/educationplatform`) – Online learning platform with courses and certifications.
-4. **Health & Wellness** (`/healthwellness`) – Holistic wellness for fitness, nutrition, and mindfulness.
-5. **Real Estate** (`/realestate`) – Modern real estate platform for buying, selling, and investing.
-6. **SaaS Product** (`/saasproduct`) – Scalable SaaS platform for workflow automation and analytics.
-7. **Tech Startup** (`/techstartup`) – Cutting‑edge technology platform for AI, blockchain, and edge computing.
+```sh
+npm ci
+npm test
+python3 -m http.server 3000 --directory dist
+```
 
-## Features
+Node 22+; no runtime or build dependencies. Publish **dist/**, including its assets and template subfolders. Relative links work at a domain root or a project subpath. Do not publish the repository root or archive.
 
-- **Reusable React components** (Button, Navbar, HeroSection, FeatureCard, PricingCard, TestimonialCard, Footer)
-- **Fully responsive design** (mobile‑first, Tailwind CSS)
-- **High‑conversion elements** (clear CTAs, social proof, pricing tables, feature highlights)
-- **External APIs**:
-  - **Unsplash API** – background and hero images (free tier, via `source.unsplash.com`)
-  - **Professional text templates** – industry‑specific copy tailored for each niche
-- **Static builds** – each landing page is a self‑contained static site (HTML, CSS, JS)
+## Editable source
 
-## How to Use
+- `data/templates.json`: seven configurations: consulting, agency, education, wellness, real estate, SaaS and startup.
+- `templates/page.html`: shared semantic demo structure.
+- `templates/catalog.html`: commercial selection page.
+- `assets/site.css`: responsive layout and color tokens.
+- `assets/catalog.js`: sector filter only; no analytics or form transmission.
+- `scripts/build.mjs`: deterministic static generation with escaped content and validated slugs/colors.
+- `scripts/verify.mjs`: output, route/anchor and demo-status checks.
 
-Open `index.html` in any browser to see the directory. Click on any card to view the corresponding landing page.
+Edit the JSON and HTML/CSS, then run `npm test`. These are marketing page templates, not the applications described by their sectors. Payment, CRM, bookings, course platforms, medical services, MLS and SaaS backends require separately scoped implementation.
 
-Each subfolder (e.g., `consultingagency/`) contains a complete static build:
+## Why the previous exports moved
 
-- `index.html`
-- `assets/` (bundled CSS and JavaScript)
+`archive/legacy/` preserves the original compiled Vite exports for reference. Original React/TypeScript component sources were not present. Those exports used root-relative `/assets` paths despite being linked from subfolders. Their original marketing claims are not validated. They are excluded from the new deployment artifact; this project supplies new maintainable source rather than editing minified bundles or pretending to recover missing source.
 
-## Development Notes
+## Commercial use
 
-- Built with **Vite + React + TypeScript**
-- Components are modular and easily customizable
-- Images are loaded from Unsplash (randomized per visit)
-- All pages share the same design system (colors, typography, spacing)
+Customers choose a structure and request an adaptation by email to contact@alicelabs.site. The link opens a draft; it does not send a message or record a lead. Price, scope, timeline, content permissions and acceptance are agreed in a proposal. See `docs/DELIVERY-CHECKLIST.md`.
 
-## Next Steps
-
-1. Replace Unsplash placeholder images with branded visuals.
-2. Connect forms to a backend or email service.
-3. Add analytics tracking (Google Analytics, etc.).
-4. Optimize SEO (meta tags, structured data).
-5. Deploy to a static hosting service (Vercel, Netlify, GitHub Pages).
-
----
-
-**Generated on**: 2026‑02‑22  
-**Time spent**: ~45 minutes  
-**Tools used**: React, Tailwind CSS, Unsplash API, Vite, Node.js
+CI builds/tests and uploads `landing-catalog`. It does not publish production or contact customers.
